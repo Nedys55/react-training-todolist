@@ -8,12 +8,13 @@ import { TasksList } from "./components/TasksList";
 
 const App = () => {
   const title = "To do list";
-  const tasks = data;
+  // const tasks = data;
   const taskToEdit: any = null;
-  const [show, setShow] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [tasks, setTasks] = useState (data)
 
   const updateTaskState = (taskId: number) => {
-    console.error("I need to be implemented");
+    
   };
 
   const addOrEditTask = (event: any, taskToEditId?: number) => {
@@ -26,7 +27,8 @@ const App = () => {
   };
 
   const deleteTask = (taskId: number) => {
-    console.error("I need to be implemented");
+    const copyTask = tasks.filter((task) => task.id !==taskId)
+    setTasks(copyTask)
   };
 
   return (
@@ -35,19 +37,17 @@ const App = () => {
         title={title}
       />
 
-    <TasksList tasks={tasks}/>
+    <TasksList tasks={tasks} deleteTask={deleteTask}/>
     
       <button
         className="add-task-btn"
-        onClick={() => setShow(true)}
+        onClick={() => setShowModal(true)}
       >
         +
       </button>
       <TaskFormModal
-        show={show}
-        handleClose={() =>
-          console.log("pass me a method that will close the modal")
-        }
+        show={showModal}
+        handleClose={() => {setShowModal(false)}}
         addOrEditTask={addOrEditTask}
         initialValues={
           taskToEdit != null
