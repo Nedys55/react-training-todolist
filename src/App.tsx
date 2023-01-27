@@ -19,7 +19,18 @@ const App = () => {
 
   const addOrEditTask = (event: any, taskToEditId?: number) => {
     event.preventDefault();
-    console.error("I need to be implemented");
+    const newForm = new FormData(event.target)
+    const newTask = Object.fromEntries(newForm)
+
+    const taskPlusId = {
+      id: tasks.length + 1,
+      title: String(newTask.title),
+      description: String(newTask.description),
+      done: false
+    }
+
+    tasks.push(taskPlusId)
+    setShowModal(false)
   };
 
   const editTask = (taskId: number) => {

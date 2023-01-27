@@ -59,7 +59,9 @@ export const TaskFormModal = ({
             />
           </label>
           <div className="form-actions">
-            <button type="submit">Enregistrer</button>
+            <button type="submit">
+              Enregistrer
+            </button>
             <button onClick={() => handleClose()}>
               Annuler
             </button>
