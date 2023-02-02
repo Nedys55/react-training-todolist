@@ -18,9 +18,14 @@ export const TaskFormModal = ({
   const [description, setDescription] = useState(
     initialValues?.description ?? undefined
   );
+  // console.log(initialValues);
 
   // Use a hook to listen to the initial values changes here
-
+  useEffect(() => {
+    setTitle(initialValues?.title);
+    setDescription(initialValues?.description);
+  }, [initialValues]);
+  
   if (!show) return null;
 
   return (
